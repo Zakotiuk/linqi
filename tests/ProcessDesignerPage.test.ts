@@ -4,7 +4,7 @@ import { MainNavigation } from '../pages/components/MainNavigation';
 import { ProcessPage } from '../pages/ProcessPage';
 import { ProcessDesignerPage } from '../pages/processDesigner/ProcessDesignerPage';
 
-test.only("Verify action is created and visible on canvas", async ({ page, loginPage }) => {
+test("Verify action is created and visible on canvas", async ({ page, loginPage }) => {
     const mainNavigation = new MainNavigation(page);
     const processPage = new ProcessPage(page);
     const actionName = "Test Action";
