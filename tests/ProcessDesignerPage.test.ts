@@ -9,25 +9,25 @@ test("Verify action is created and visible on canvas", async ({ page, loginPage 
     const processPage = new ProcessPage(page);
     const actionName = "Test Action";
     
-    await mainNavigation.processButton.click();
+    await mainNavigation.clickProcessButton();
     await expect(page).toHaveURL(/.processDashboard/);
 
     const [newPage] = await Promise.all([
         page.context().waitForEvent('page'),
-        processPage.createProcessButton.click()
+        processPage.clickCreateProcessButton()
     ]);
 
     const processDesignerPage = new ProcessDesignerPage(newPage);
     await expect(newPage).toHaveURL(/.processDesigner/);
 
-    await processDesignerPage.processNameInput.fill(actionName);
+    await processDesignerPage.fillProcessName(actionName);
     await expect(processDesignerPage.processNameInput).toHaveValue(actionName);
 
-    await processDesignerPage.actionButton.click();
-    await processDesignerPage.actionModal.processStartButton.dragTo(processDesignerPage.emptyMainCanvas);
+    await processDesignerPage.clickActionButton();
+    await processDesignerPage.dragActionToCanvas();
 
-    await processDesignerPage.actionModal.closeModalButton.click();
-    await processDesignerPage.saveButton.click();
+    await processDesignerPage.closeActionModal();
+    await processDesignerPage.clickSaveProcessButton();
     await expect(processDesignerPage.circleOkIcon).toBeVisible();
 
     await expect(processDesignerPage.filledMainCanvas).toBeVisible();

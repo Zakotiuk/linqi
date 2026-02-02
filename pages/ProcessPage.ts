@@ -8,4 +8,8 @@ export class ProcessPage {
         this.page = page;
         this.createProcessButton = page.getByTestId('processList-addProcess-click');
     }
+
+    async clickCreateProcessButton() {
+        await this.createProcessButton.click();
+    }
 }

@@ -8,4 +8,8 @@ export class MainNavigation {
         this.page = page;
         this.processButton = page.getByTestId('mainNav-Prozess-Dashboard');
     }
+
+    async clickProcessButton() {
+        await this.processButton.click();
+    }
 }

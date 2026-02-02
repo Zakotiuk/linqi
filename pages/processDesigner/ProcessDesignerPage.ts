@@ -25,4 +25,24 @@ export class ProcessDesignerPage {
         this.filledMainCanvas = page.locator('.linqi-graph-panZoomablePaperCanvas');
         this.actionOnCanvas = this.filledMainCanvas.locator(".linqi-graph-nodeContainer"); // get action elements from the canvas locator
     }
+
+    async clickActionButton() {
+        await this.actionButton.click();
+    }
+
+    async fillProcessName(name: string) {
+        await this.processNameInput.fill(name);
+    }
+
+    async dragActionToCanvas() {
+        await this.actionModal.processStartButton.dragTo(this.emptyMainCanvas);
+    }
+
+    async closeActionModal() {
+        await this.actionModal.closeModalButton.click();
+    }
+
+    async clickSaveProcessButton() {
+        await this.saveButton.click();
+    }
 }
